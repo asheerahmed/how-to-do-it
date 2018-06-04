@@ -2,56 +2,49 @@ Create Boot able USB Flash Drive
 
 Steps
 
-Insert a usb drive at least 4gb in size
+>> Insert a usb drive at least 4gb in size
 
-Open a command prompt as administrator
-Hit Windows Key, type cmd and hit Ctrl+Shift+Enter. This will force it to open as admin.
+>> Open command prompt as administrator
 
-Run diskpart
-This will open and run the Diskpart command line utility, which allows you to manage disks, partitions and volumes.
+>> Run diskpart
 
-C:\Windows\system32> diskpart
+      C:\Windows\system32> diskpart
 
-Run list disk
-This will list all disks on your system. You’ll see the something similar to this:
-DISKPART> list disk
+>> Run list disk
+            DISKPART> list disk
 
-Disk ### Status Size Free Dyn Gpt
+            Disk ### Status Size Free Dyn Gpt
 
-Disk 0 Online 238 GB 0 B
-Disk 1 Online 465 GB 0 B
-Disk 2 Online 29 GB 0 B
+            Disk 0 Online 238 GB 0 B
+            Disk 1 Online 465 GB 0 B
+            Disk 2 Online 29 GB 0 B
 
-Select your flash drive by running select disk #
-Find the item that corresponds with your flash drive and select the disk. In the example above, my flash drive is disk 2 so I’ll run:
-DISKPART> select disk 2
+>> Select your flash drive by running select disk #
+   DISKPART> select disk 2
 
 Disk 2 is now the selected disk.
 
-Run clean
-WARNING: This deletes all data on your drive
-The clean command marks all data on the drive as deleted and therefore removes all partitions and volumes. Make sure you want to do this! If you are sure, run:
-DISKPART> clean
+>> Run clean
+            WARNING: This deletes all data on your drive
+            DISKPART> clean
 
-Create a partition
-DISKPART> create partition primary
+>> Create a partition
+            DISKPART> create partition primary
 
-Select the new partition
-Since we know there is only one partition, we can just run this:
+>> Select the new partition
+            Since we know there is only one partition, we can just run this:
 
-DISKPART> select partition 1
-Without checking the partition number. If you’re really curious, run list partition to check.
+            DISKPART> select partition 1
 
-Format the partition
-To format it, we’ll use the NTFS file system and run a quick format:
-DISKPART> format fs=ntfs quick
+>> Format the partition
+            To format it, we’ll use the NTFS file system and run a quick format:
+            DISKPART> format fs=ntfs quick
 
-Set the current partition as Active
-Run:
-DISKPART> active
+>> Set the current partition as Active
+            Run: DISKPART> active
 
-Exit diskpart
-Run exit. This will exit diskpart, but leave the command window open.
+>> Exit diskpart
+            Run exit. This will exit diskpart, but leave the command window open.
 
 Mount your ISO
 Use Virtual CloneDrive or similar.
